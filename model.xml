@@ -30,6 +30,7 @@
 				<feature name="Service">
 					<description>The service mode enables maintenance by heading towards the lowest floor and ignoring all requests unless the service mode is stopped from within the elevator.</description>
 				</feature>
+				<feature name="Stop"/>
 				<or abstract="true" name="Priorities">
 					<description>Priorities specify that certain requests are supposed to be processed faster than others.</description>
 					<feature abstract="true" name="RushHour">
@@ -71,6 +72,10 @@
 					<description>A sensor measures the load of the elevator and will not close the doors until the limit of the elevator is not reached.</description>
 				</feature>
 			</and>
+			<alt abstract="true" name="UI">
+				<feature name="Enterprise"/>
+				<feature name="Common"/>
+			</alt>
 		</and>
 	</struct>
 	<constraints>

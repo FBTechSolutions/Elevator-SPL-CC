@@ -94,6 +94,9 @@ public class MainWindow implements ITickListener
 		}
 		frmElevatorSample = new JFrame();
 		frmElevatorSample.setTitle("Elevator SPL");
+		//#if Enterprise
+		frmElevatorSample.setTitle("Elevator Enterprise");
+		//#endif
 		frmElevatorSample.setBounds(100, 50, 900, 650); // window position and size
 		frmElevatorSample.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -135,8 +138,14 @@ public class MainWindow implements ITickListener
 		panel_control.setLayout(gbl_panel_control);
 		
 		lblEvent = new JLabel("");
+		//#if Enterprise
+		lblEvent = new JLabel("Welcome Enterprise User");
+		//#endif
 		lblEvent.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblEvent.setForeground(Color.WHITE);
+		//#if Enterprise
+		lblEvent.setForeground(Color.BLUE);
+		//#endif
 		lblEvent.setHorizontalAlignment(SwingConstants.CENTER);
 		GridBagConstraints gbc_lbl = new GridBagConstraints();
 		gbc_lbl.gridwidth = 4;
@@ -147,19 +156,52 @@ public class MainWindow implements ITickListener
 		panel_control.add(lblEvent, gbc_lbl);
 		// #if Service
 		JToggleButton btnService = new JToggleButton("Service");
-		btnService.setMinimumSize(new Dimension(80, 30));
-		btnService.setPreferredSize(new Dimension(80, 30));
-		btnService.setMaximumSize(new Dimension(80, 30));
+		btnService.setMinimumSize(new Dimension(
+				//#if Enterprise
+				120,
+				//#else
+//@				80,
+				//#endif
+				30));
+		btnService.setPreferredSize(new Dimension(
+				//#if Enterprise
+				120,
+				//#else
+//@				80,
+				//#endif
+				30));
+		btnService.setMaximumSize(new Dimension(
+				//#if Enterprise
+				120,
+				//#else
+//@				80,
+				//#endif
+				30));
 		GridBagConstraints gbc_btnService = new GridBagConstraints();
 		//#if CallButtons
-		gbc_btnService.insets = new Insets(0, 0, 0, 10);
+		gbc_btnService.insets = new Insets(0,
+				//#if Enterprise
+				4, 20, 2
+				//#else
+//@				0, 0, 10
+				//#endif
+				);
 		//#else
 		//@		gbc_btnService.insets = new Insets(0, 0, 0, 0);
 		//@		gbc_btnService.gridwidth = 4;
 		//#endif
-		gbc_btnService.fill = GridBagConstraints.HORIZONTAL;
+		//#if Enterprise
+		gbc_btnService.fill = GridBagConstraints.VERTICAL;
+		//#else
+//@		gbc_btnService.fill = GridBagConstraints.HORIZONTAL;
+		//#endif
 		gbc_btnService.gridx = 0;
-		gbc_btnService.gridy = 4;
+		//#if Enterprise
+		gbc_btnService.gridy = 1;
+		gbc_btnService.gridwidth = 2;
+		//#else
+//@		gbc_btnService.gridy = 4;
+		//#endif
 		panel_control.add(btnService, gbc_btnService);
 		btnService.addActionListener(new ActionListener() {
 			@Override
@@ -168,12 +210,41 @@ public class MainWindow implements ITickListener
 				if (sim.isInService()) {
 					setEventLabel("Service-Mode!", Color.ORANGE);
 				} else {
-					setEventLabel("", Color.WHITE);
+					//#if Enterprise
+					setEventLabel("...", Color.BLUE);
+					//#else
+//@					setEventLabel("", Color.WHITE);
+					//#endif
+					
 				}
 			}
 		});
 		//#endif
 		
+		//#if Stop
+		 JToggleButton btnStop = new JToggleButton("Stop");
+		 btnStop.setMinimumSize(new Dimension(120, 30));
+		 btnStop.setPreferredSize(new Dimension(120, 30));
+		 btnStop.setMaximumSize(new Dimension(120, 30));
+		 GridBagConstraints gbc_btnStop = new GridBagConstraints();
+		 gbc_btnStop.insets = new Insets(0, 2, 20, 4);
+		 gbc_btnStop.fill = GridBagConstraints.VERTICAL;
+		 gbc_btnStop.gridx = 2;
+		 gbc_btnStop.gridy = 1;
+		 gbc_btnStop.gridwidth = 2;
+		 panel_control.add(btnStop, gbc_btnStop);
+		 btnStop.addActionListener(new ActionListener() {
+			 @Override
+			 public void actionPerformed(ActionEvent e) {
+				 sim.toggleStopMode();
+				 if (sim.isStopMode()) {
+					 setEventLabel("Stop-Mode!", Color.ORANGE);
+				 } else {
+					 setEventLabel("...", Color.BLUE);
+				 }
+			 }
+		 });
+		//#endif
 		//#if CallButtons
 		JPanel panel_floors = new JPanel(new GridLayout(0,3));
 		panel_floors.setBackground(Color.GRAY);
@@ -191,10 +262,19 @@ public class MainWindow implements ITickListener
 		}
 			
 		GridBagConstraints gbc_btnFloor = new GridBagConstraints();
-		gbc_btnFloor.insets = new Insets(0, 0, 0, 0);
+		//#if Enterprise
+		gbc_btnFloor.insets = new Insets(0, 2, 0, 2);
+		//#else
+//@		gbc_btnFloor.insets = new Insets(0, 0, 0, 0);
+		//#endif
+	
 		gbc_btnFloor.fill = GridBagConstraints.BOTH;
 		gbc_btnFloor.gridwidth = 4;
-		gbc_btnFloor.gridx = 2;
+		//#if Enterprise
+		gbc_btnFloor.gridx = 0;
+		//#else
+//@		gbc_btnFloor.gridx = 2;
+		//#endif
 		gbc_btnFloor.gridy = 4;
 			
 		panel_control.add(panel_floors, gbc_btnFloor);

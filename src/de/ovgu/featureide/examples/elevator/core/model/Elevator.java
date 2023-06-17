@@ -38,7 +38,9 @@ public class Elevator {
 	//#if Service
 	private boolean inService = false;
 	//#endif
-	
+	//#if Stop
+	private boolean inStopMode = false;
+	//#endif
 	//#if FloorPermission
 	private List<Integer> disabledFloors;
 	//#endif
@@ -66,4 +68,13 @@ public class Elevator {
 	 
 	public ElevatorState getCurrentState() { return currentState; }
 	public void setCurrentState(ElevatorState state) { currentState = state; }
+	
+	//#if Stop
+	public boolean isInStopMode() {
+		return inStopMode;
+	}
+	public void setInStopMode(boolean inStopMode) {
+		this.inStopMode = inStopMode;
+	}
+	//#endif
 }

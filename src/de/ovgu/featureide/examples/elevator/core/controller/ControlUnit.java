@@ -77,6 +77,11 @@ public class ControlUnit implements Runnable
 					elevator.setDirection(ElevatorState.MOVING_DOWN);
 					elevator.setCurrentFloor(elevator.getCurrentFloor() - 1);
 					break;
+				//#if Stop
+				case MOVING_STOP:
+					this.triggerOnTick();
+					break;
+				//#endif
 				case FLOORING:
 					this.triggerOnTick();
 					break;
@@ -101,6 +106,11 @@ public class ControlUnit implements Runnable
 			case MOVING_DOWN:
 				this.triggerOnTick();
 				break;
+			//#if Stop	
+			case MOVING_STOP:
+				this.triggerOnTick();
+				break;
+			//#endif	
 			default:
 				break;
 			}
@@ -116,6 +126,11 @@ public class ControlUnit implements Runnable
 			} else {
 				return ElevatorState.FLOORING;
 			}
+		}
+		//#endif
+		//#if Stop
+		if (isInStopMode()) {
+			return ElevatorState.MOVING_STOP;
 		}
 		//#endif
 		//#if Sabbath
@@ -230,6 +245,14 @@ public class ControlUnit implements Runnable
 	
 	public boolean isDisabledFloor(int level) {
 		return !elevator.getDisabledFloors().contains(level);
+	}
+	//#endif
+	//#if Stop
+	public void setStopMode(boolean b) {
+		elevator.setInStopMode(b);
+	}
+	public boolean isInStopMode() {
+		return elevator.isInStopMode();
 	}
 	//#endif
 
