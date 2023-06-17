@@ -113,7 +113,17 @@ public class SimulationUnit {
 		return controller.isInService();
 	}
 	//#endif
+	
+	//#if Stop
+	public void toggleStopMode() {
+		controller.setStopMode(!controller.isInStopMode());
+	}
 
+	public boolean isStopMode() {
+		return controller.isInStopMode();
+	}
+	//#endif
+	
 	//#if FloorPermission
 	public void setDisabledFloors(List<Integer> disabledFloors) {
 		this.controller.setDisabledFloors(disabledFloors);

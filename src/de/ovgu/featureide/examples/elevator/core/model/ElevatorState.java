@@ -20,4 +20,8 @@
  */
 package de.ovgu.featureide.examples.elevator.core.model;
 
-public enum ElevatorState { MOVING_UP, MOVING_DOWN, FLOORING }
+public enum ElevatorState { MOVING_UP, MOVING_DOWN, FLOORING
+	//#if Stop
+	,MOVING_STOP
+	//#endif
+}
