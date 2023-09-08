@@ -45,7 +45,7 @@ public class SimulationUnit {
 	
 	public static void main(String[] args) {
 		SimulationUnit sim = new SimulationUnit();
-		//#if CallButtons | FloorPermission | Service
+		//#if CallButtons | FloorPermission 
 		simulationWindow = new MainWindow(sim);
 		//#else
 //@		simulationWindow = new MainWindow();
@@ -101,16 +101,6 @@ public class SimulationUnit {
 	
 	public int getCurrentFloor() {
 		return controller.getCurrentFloor();
-	}
-	//#endif
-	
-	//#if Service
-	public void toggleService() {
-		controller.setService(!controller.isInService());
-	}
-		
-	public boolean isInService() {
-		return controller.isInService();
 	}
 	//#endif
 	

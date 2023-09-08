@@ -27,9 +27,6 @@
 						<description>The elevator always moves to the requested floor that is closest to the current floor.</description>
 					</feature>
 				</alt>
-				<feature name="Service">
-					<description>The service mode enables maintenance by heading towards the lowest floor and ignoring all requests unless the service mode is stopped from within the elevator.</description>
-				</feature>
 				<feature name="Stop"/>
 				<or abstract="true" name="Priorities">
 					<description>Priorities specify that certain requests are supposed to be processed faster than others.</description>

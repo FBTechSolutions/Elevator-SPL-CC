@@ -48,22 +48,20 @@ import de.ovgu.featureide.examples.elevator.core.model.ElevatorState;
 import java.util.Arrays;
 //#endif
 
-//#if Service
 import java.awt.Dimension;
-//#endif
 
 //#if CallButtons
 import de.ovgu.featureide.examples.elevator.core.controller.Request;
 //#endif
 
-//#if CallButtons | Service
+//#if CallButtons
 import javax.swing.JToggleButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.GridLayout;
 //#endif
 
-//#if CallButtons | FloorPermission | Service
+//#if CallButtons | FloorPermission
 import de.ovgu.featureide.examples.elevator.sim.SimulationUnit;
 //#endif
 
@@ -82,7 +80,7 @@ public class MainWindow implements ITickListener
 	private List<JToggleButton> listInnerElevatorControls = new ArrayList<>();
 	//#endif
 
-	//#if CallButtons | FloorPermission | Service
+	//#if CallButtons | FloorPermission
 	private SimulationUnit sim;
 
 	public MainWindow(SimulationUnit sim) {
@@ -157,72 +155,6 @@ public class MainWindow implements ITickListener
 		gbc_lbl.gridx = 0;
 		gbc_lbl.gridy = 0;
 		panel_control.add(lblEvent, gbc_lbl);
-		// #if Service
-		JToggleButton btnService = new JToggleButton("Service");
-		btnService.setMinimumSize(new Dimension(
-				//#if Enterprise
-				120,
-				//#else
-//@				80,
-				//#endif
-				30));
-		btnService.setPreferredSize(new Dimension(
-				//#if Enterprise
-				120,
-				//#else
-//@				80,
-				//#endif
-				30));
-		btnService.setMaximumSize(new Dimension(
-				//#if Enterprise
-				120,
-				//#else
-//@				80,
-				//#endif
-				30));
-		GridBagConstraints gbc_btnService = new GridBagConstraints();
-		//#if CallButtons
-		gbc_btnService.insets = new Insets(0,
-				//#if Enterprise
-				4, 20, 2
-				//#else
-//@				0, 0, 10
-				//#endif
-				);
-		//#else
-		//@		gbc_btnService.insets = new Insets(0, 0, 0, 0);
-		//@		gbc_btnService.gridwidth = 4;
-		//#endif
-		//#if Enterprise
-		gbc_btnService.fill = GridBagConstraints.VERTICAL;
-		//#else
-//@		gbc_btnService.fill = GridBagConstraints.HORIZONTAL;
-		//#endif
-		gbc_btnService.gridx = 0;
-		//#if Enterprise
-		gbc_btnService.gridy = 1;
-		gbc_btnService.gridwidth = 2;
-		//#else
-//@		gbc_btnService.gridy = 4;
-		//#endif
-		panel_control.add(btnService, gbc_btnService);
-		btnService.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				sim.toggleService();
-				if (sim.isInService()) {
-					setEventLabel("Service-Mode!", Color.ORANGE);
-				} else {
-					//#if Enterprise
-					setEventLabel("...", Color.BLUE);
-					//#else
-//@					setEventLabel("", Color.WHITE);
-					//#endif
-					
-				}
-			}
-		});
-		//#endif
 		
 		//#if Stop
 		 JToggleButton btnStop = new JToggleButton("Stop");

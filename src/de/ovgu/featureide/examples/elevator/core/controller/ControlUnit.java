@@ -119,15 +119,6 @@ public class ControlUnit implements Runnable
 
 	private ElevatorState calculateNextState() {
 		final int currentFloor = elevator.getCurrentFloor();
-		//#if Service
-		if (isInService()) {
-			if (currentFloor != elevator.getMinFloor()) {
-				return ElevatorState.MOVING_DOWN;
-			} else {
-				return ElevatorState.FLOORING;
-			}
-		}
-		//#endif
 		//#if Stop
 		if (isInStopMode()) {
 			return ElevatorState.MOVING_STOP;
@@ -224,15 +215,6 @@ public class ControlUnit implements Runnable
 	}
 	//#endif
 
-	//#if Service
-	public void setService(boolean modus) {
-		elevator.setService(modus);
-	}
-		
-	public boolean isInService() {
-		return elevator.isInService();
-	}
-	//#endif
 
 	//#if FloorPermission
 	public void setEnabledFloors(List<Integer> enabledFloors) {

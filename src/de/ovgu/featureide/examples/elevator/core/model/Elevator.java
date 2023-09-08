@@ -35,9 +35,6 @@ public class Elevator {
 	private int currentFloor = 0;
 	private ElevatorState currentState = ElevatorState.FLOORING;
 	
-	//#if Service
-	private boolean inService = false;
-	//#endif
 	//#if Stop
 	private boolean inStopMode = false;
 	//#endif
@@ -49,11 +46,6 @@ public class Elevator {
 	
 	public int getMaxFloor() { return maxFloor;	}
 	public int getMinFloor() { return minFloor; }
-	
-	//#if Service
-	public boolean isInService() { return inService; }
-	public void setService(boolean inService) { this.inService = inService; }
-	//#endif
 	
 	//#if FloorPermission
 	public void setEnabledFloors(List<Integer> disabledFloors) { this.enabledFloors = disabledFloors; }

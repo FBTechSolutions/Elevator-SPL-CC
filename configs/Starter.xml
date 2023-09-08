@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <configuration>
-	<feature name="ElevatorSPLAntenna"/>
+	<feature automatic="selected" name="ElevatorSPLAntenna"/>
 	<feature automatic="selected" name="Behavior"/>
 	<feature automatic="selected" name="Modes"/>
 	<feature manual="selected" name="Sabbath"/>
 	<feature automatic="unselected" name="FIFO"/>
 	<feature automatic="unselected" name="ShortestPath"/>
-	<feature name="Service"/>
 	<feature name="Stop"/>
 	<feature name="Priorities"/>
 	<feature name="RushHour"/>

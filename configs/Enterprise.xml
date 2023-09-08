@@ -6,7 +6,6 @@
 	<feature automatic="unselected" name="Sabbath"/>
 	<feature automatic="unselected" name="FIFO"/>
 	<feature automatic="selected" manual="selected" name="ShortestPath"/>
-	<feature manual="selected" name="Service"/>
 	<feature manual="selected" name="Stop"/>
 	<feature name="Priorities"/>
 	<feature name="RushHour"/>
