@@ -42,7 +42,7 @@ public class Elevator {
 	private boolean inStopMode = false;
 	//#endif
 	//#if FloorPermission
-	private List<Integer> disabledFloors;
+	private List<Integer> enabledFloors;
 	//#endif
 	
 	public Elevator(int maxFloor) { this.maxFloor = maxFloor; }
@@ -56,8 +56,8 @@ public class Elevator {
 	//#endif
 	
 	//#if FloorPermission
-	public void setDisabledFloors(List<Integer> disabledFloors) { this.disabledFloors = disabledFloors; }
-	public List<Integer> getDisabledFloors() { return this.disabledFloors; }
+	public void setEnabledFloors(List<Integer> disabledFloors) { this.enabledFloors = disabledFloors; }
+	public List<Integer> getEnabledFloors() { return this.enabledFloors; }
 	//#endif
 	
 	public ElevatorState getDirection() { return direction; }

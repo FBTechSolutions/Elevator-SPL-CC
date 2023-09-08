@@ -108,7 +108,7 @@ public class FloorComposite extends JPanel
 		add(lblFloorImage);
 		lblFloorImage.setIcon(showsOpen ? img_open : img_close);
 		//#if FloorPermission
-		this.isEnabled = simulation.isDisabledFloor(level);
+		this.isEnabled = simulation.isEnabledFloor(level);
 		//#endif
 		// #if CallButtons
 		this.level = level;

@@ -67,6 +67,8 @@ import java.awt.GridLayout;
 import de.ovgu.featureide.examples.elevator.sim.SimulationUnit;
 //#endif
 
+import javax.swing.BorderFactory;
+
 public class MainWindow implements ITickListener
 											//#if CallButtons
 											, ActionListener 
@@ -101,9 +103,10 @@ public class MainWindow implements ITickListener
 		frmElevatorSample.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		//#if FloorPermission
-		FloorChooseDialog permissionDialog = new FloorChooseDialog(maxFloors, Arrays.asList(0), "Choose disabled floors");
-		List<Integer> disabledFloors = permissionDialog.getSelectedFloors();
-		sim.setDisabledFloors(disabledFloors);
+		FloorChooseDialog permissionDialog = new FloorChooseDialog(maxFloors, Arrays.asList(0), "Choose enabled floors");
+		List<Integer> enabledFloors = permissionDialog.getSelectedFloors();
+		enabledFloors.add(0);
+		sim.setEnabledFloors(enabledFloors);
 		permissionDialog.dispose();
 		//#endif
 		
@@ -250,15 +253,15 @@ public class MainWindow implements ITickListener
 		panel_floors.setBackground(Color.GRAY);
 		
 		JToggleButton btnFloor;
-		for (int i = maxFloors; i >= 0; i--) {
+		for (int i = 0; i <= maxFloors; i++) {
 			btnFloor = new JToggleButton(String.valueOf(i));
 			btnFloor.setActionCommand(String.valueOf(i));
 			btnFloor.addActionListener(this);
 			//#if FloorPermission
-			btnFloor.setEnabled(sim.isDisabledFloor(i));
+			btnFloor.setEnabled(sim.isEnabledFloor(i));
 			//#endif
 			panel_floors.add(btnFloor);
-			listInnerElevatorControls.add(0, btnFloor);
+			listInnerElevatorControls.add(i, btnFloor);
 		}
 			
 		GridBagConstraints gbc_btnFloor = new GridBagConstraints();

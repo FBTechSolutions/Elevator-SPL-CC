@@ -125,16 +125,16 @@ public class SimulationUnit {
 	//#endif
 	
 	//#if FloorPermission
-	public void setDisabledFloors(List<Integer> disabledFloors) {
-		this.controller.setDisabledFloors(disabledFloors);
+	public void setEnabledFloors(List<Integer> enabledFloors) {
+		this.controller.setEnabledFloors(enabledFloors);
 	}
 	
 	public List<Integer> getDisabledFloors() {
 		return this.controller.getDisabledFloors();
 	}
 	
-	public boolean isDisabledFloor(int level) {
-		return this.controller.isDisabledFloor(level);
+	public boolean isEnabledFloor(int level) {
+		return this.controller.isEnabledFloor(level);
 	}
 	//#endif
 }

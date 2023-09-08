@@ -235,16 +235,16 @@ public class ControlUnit implements Runnable
 	//#endif
 
 	//#if FloorPermission
-	public void setDisabledFloors(List<Integer> disabledFloors) {
-		elevator.setDisabledFloors(disabledFloors);
+	public void setEnabledFloors(List<Integer> enabledFloors) {
+		elevator.setEnabledFloors(enabledFloors);
 	}
 	
 	public List<Integer> getDisabledFloors() {
-		return elevator.getDisabledFloors();
+		return elevator.getEnabledFloors();
 	}
 	
-	public boolean isDisabledFloor(int level) {
-		return !elevator.getDisabledFloors().contains(level);
+	public boolean isEnabledFloor(int level) {
+		return elevator.getEnabledFloors().contains(level);
 	}
 	//#endif
 	//#if Stop
